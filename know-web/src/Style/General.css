@@ -5,4 +5,7 @@
     --primary-dark: #EEE;
     --secondary: #EEE;
     --secondary-dark: #CCC;
+    --RPG-background: rgb(245, 187, 139);
+    --RPG-ground-primary: rgb(126, 95, 82);
+    --RPG-ground-secondary: rgb(46, 43, 41);
 }
