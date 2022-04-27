@@ -1,0 +1,15 @@
+@font-face {
+    font-family: DinkleBitmap-7px;
+    font-style: normal;
+    src: url(/types/DinkieBitmap-7pxDemo.ttf);
+}
+@font-face {
+    font-family: DinkleBitmap-9px;
+    font-style: normal;
+    src: url(/types/DinkieBitmap-9pxDemo.ttf);
+}
+@font-face {
+    font-family: DinkleBitmap-9px;
+    font-style: italic;
+    src: url(/types/DinkieBitmap-9pxItalicDemo.ttf);
+}
