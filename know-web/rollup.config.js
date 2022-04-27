@@ -64,7 +64,6 @@ export default [
                     watch: 'public/App.js',
                     delay: 200,
                 }),
-            isDev && serve(),
             !isDev && terser(),
         ],
     },
@@ -90,6 +89,7 @@ export default [
             commonjs(),
             typescript(),
             !isDev && terser(),
+            isDev && serve(),
         ],
     },
 ]
