@@ -1,0 +1,26 @@
+button.svelte-112zxsy{background:none;border:none;font-family:'DinkleBitmap-9px'}main.svelte-2w0bvh{height:100vh;min-height:400px;background:var(--RPG-background)}#RPGDialog.svelte-2w0bvh{position:fixed;top:0;left:0;width:100%;max-height:30vh;z-index:5}#RPGDialogHeader.svelte-2w0bvh{text-align:left;font-family:DinkleBitmap-9px;font-size:27px}@font-face {
+    font-family: DinkleBitmap-7px;
+    font-style: normal;
+    src: url('/types/DinkieBitmap-7pxDemo.ttf');
+}
+@font-face {
+    font-family: DinkleBitmap-9px;
+    font-style: normal;
+    src: url('/types/DinkieBitmap-9pxDemo.ttf');
+}
+@font-face {
+    font-family: DinkleBitmap-9px;
+    font-style: italic;
+    src: url('/types/DinkieBitmap-9pxItalicDemo.ttf');
+}:root {
+    --background: #FFF;
+    --background-dark: #F8F8F8;
+    --primary: #171717;
+    --primary-dark: #EEE;
+    --secondary: #EEE;
+    --secondary-dark: #CCC;
+    --RPG-background: rgb(245, 187, 139);
+    --RPG-ground-primary: rgb(126, 95, 82);
+    --RPG-ground-secondary: rgb(46, 43, 41);
+}
+body.svelte-19h1s1p{padding:0}

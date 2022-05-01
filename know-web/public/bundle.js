@@ -240,6 +240,10 @@ var app = (function () {
     function empty() {
         return text('');
     }
+    function listen(node, event, handler, options) {
+        node.addEventListener(event, handler, options);
+        return () => node.removeEventListener(event, handler, options);
+    }
     function attr(node, attribute, value) {
         if (value == null)
             node.removeAttribute(attribute);
@@ -1742,6 +1746,8 @@ var app = (function () {
     function create_fragment$3(ctx) {
     	let button;
     	let current;
+    	let mounted;
+    	let dispose;
     	const default_slot_template = /*#slots*/ ctx[1].default;
     	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[0], null);
 
@@ -1759,7 +1765,7 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(button, "class", "svelte-1oe57e7");
+    			attr(button, "class", "svelte-112zxsy");
     		},
     		m(target, anchor) {
     			insert_hydration(target, button, anchor);
@@ -1769,6 +1775,11 @@ var app = (function () {
     			}
 
     			current = true;
+
+    			if (!mounted) {
+    				dispose = listen(button, "click", /*click_handler*/ ctx[2]);
+    				mounted = true;
+    			}
     		},
     		p(ctx, [dirty]) {
     			if (default_slot) {
@@ -1798,18 +1809,21 @@ var app = (function () {
     		d(detaching) {
     			if (detaching) detach(button);
     			if (default_slot) default_slot.d(detaching);
+    			mounted = false;
+    			dispose();
     		}
     	};
     }
 
     function instance$3($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
+    	const click_handler = () => alert("wow");
 
     	$$self.$$set = $$props => {
     		if ('$$scope' in $$props) $$invalidate(0, $$scope = $$props.$$scope);
     	};
 
-    	return [$$scope, slots];
+    	return [$$scope, slots, click_handler];
     }
 
     class RPGButton extends SvelteComponent {
@@ -1858,10 +1872,10 @@ var app = (function () {
     		},
     		h() {
     			attr(div0, "id", "RPGDialogHeader");
-    			attr(div0, "class", "svelte-1uwp6sy");
+    			attr(div0, "class", "svelte-2w0bvh");
     			attr(div1, "id", "RPGDialog");
-    			attr(div1, "class", "svelte-1uwp6sy");
-    			attr(main, "class", "svelte-1uwp6sy");
+    			attr(div1, "class", "svelte-2w0bvh");
+    			attr(main, "class", "svelte-2w0bvh");
     		},
     		m(target, anchor) {
     			insert_hydration(target, main, anchor);
@@ -2089,7 +2103,7 @@ var app = (function () {
     	};
     }
 
-    // (11:4) <Route path="/">
+    // (12:4) <Route path="/">
     function create_default_slot_1(ctx) {
     	let home;
     	let current;
@@ -2121,7 +2135,7 @@ var app = (function () {
     	};
     }
 
-    // (7:0) <Router {url}>
+    // (8:4) <Router {url}>
     function create_default_slot(ctx) {
     	let route0;
     	let t;
@@ -2197,6 +2211,7 @@ var app = (function () {
     }
 
     function create_fragment(ctx) {
+    	let body;
     	let router;
     	let current;
 
@@ -2210,13 +2225,23 @@ var app = (function () {
 
     	return {
     		c() {
+    			body = element("body");
     			create_component(router.$$.fragment);
+    			this.h();
     		},
     		l(nodes) {
-    			claim_component(router.$$.fragment, nodes);
+    			body = claim_element(nodes, "BODY", { class: true });
+    			var body_nodes = children(body);
+    			claim_component(router.$$.fragment, body_nodes);
+    			body_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
+    			attr(body, "class", "svelte-19h1s1p");
     		},
     		m(target, anchor) {
-    			mount_component(router, target, anchor);
+    			insert_hydration(target, body, anchor);
+    			mount_component(router, body, null);
     			current = true;
     		},
     		p(ctx, [dirty]) {
@@ -2239,7 +2264,8 @@ var app = (function () {
     			current = false;
     		},
     		d(detaching) {
-    			destroy_component(router, detaching);
+    			if (detaching) detach(body);
+    			destroy_component(router);
     		}
     	};
     }

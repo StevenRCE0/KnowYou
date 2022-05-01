@@ -6,6 +6,7 @@ import sveltePreprocess from 'svelte-preprocess'
 import typescript from '@rollup/plugin-typescript'
 import { terser } from 'rollup-plugin-terser'
 import css from 'rollup-plugin-css-only'
+import alias from 'rollup-plugin-alias'
 
 const isDev = Boolean(process.env.ROLLUP_WATCH)
 
@@ -41,16 +42,19 @@ export default [
             file: 'public/bundle.js',
         },
         plugins: [
+            alias({
+                resolve: ['.ts', '.svelte', '.css', '.js'],
+                entries: {
+                    '@': './../../../src',
+                },
+            }),
             svelte({
                 preprocess: sveltePreprocess({ sourceMap: isDev }),
                 compilerOptions: {
                     hydratable: true,
-                    css: (css) => {
-                        css.write('public/bundle.css')
-                    },
                 },
             }),
-            css({ output: 'bundle.css' }),
+            css({ output: 'extra.css' }),
             resolve({
                 browser: true,
                 dedupe: ['svelte'],
@@ -78,13 +82,19 @@ export default [
             file: 'public/App.js',
         },
         plugins: [
+            alias({
+                resolve: ['.ts', '.svelte', '.css', '.js'],
+                entries: {
+                    '@': './../../../src',
+                },
+            }),
             svelte({
                 preprocess: sveltePreprocess({ sourceMap: isDev }),
                 compilerOptions: {
                     generate: 'ssr',
                 },
             }),
-            css({ output: 'bundle.css' }),
+            css({ output: 'extra.css' }),
             resolve(),
             commonjs(),
             typescript(),

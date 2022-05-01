@@ -1,4 +1,6 @@
 <script lang="ts">
+    import '@/Style/Typeface.css'
+    import '@/Style/General.css'
     export let dialogName: String
 </script>
 
@@ -13,6 +15,7 @@
     main {
         height: 100vh;
         min-height: 400px;
+        background: var(--RPG-background);
     }
     #RPGDialog {
         position: fixed;

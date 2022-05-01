@@ -5,7 +5,8 @@
     export let url: string
 </script>
 
-<Router {url}>
+<body>
+    <Router {url}>
     <Route path="rpg">
         <RPGHome />
     </Route>
@@ -13,3 +14,10 @@
         <Home />
     </Route>
 </Router>
+</body>
+
+<style>
+    body {
+        padding: 0;
+    }
+</style>
