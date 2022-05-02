@@ -346,6 +346,14 @@ var app = (function () {
         if (text.wholeText !== data)
             text.data = data;
     }
+    function set_style(node, key, value, important) {
+        if (value === null) {
+            node.style.removeProperty(key);
+        }
+        else {
+            node.style.setProperty(key, value, important ? 'important' : '');
+        }
+    }
 
     let current_component;
     function set_current_component(component) {
@@ -1148,7 +1156,7 @@ var app = (function () {
     	};
     }
 
-    function instance$5($$self, $$props, $$invalidate) {
+    function instance$6($$self, $$props, $$invalidate) {
     	let $location;
     	let $routes;
     	let $base;
@@ -1308,7 +1316,7 @@ var app = (function () {
     class Router extends SvelteComponent {
     	constructor(options) {
     		super();
-    		init(this, options, instance$5, create_fragment$6, safe_not_equal, { basepath: 3, url: 4 });
+    		init(this, options, instance$6, create_fragment$6, safe_not_equal, { basepath: 3, url: 4 });
     	}
     }
 
@@ -1602,7 +1610,7 @@ var app = (function () {
     	};
     }
 
-    function instance$4($$self, $$props, $$invalidate) {
+    function instance$5($$self, $$props, $$invalidate) {
     	let $activeRoute;
     	let $location;
     	let { $$slots: slots = {}, $$scope } = $$props;
@@ -1672,7 +1680,7 @@ var app = (function () {
     class Route extends SvelteComponent {
     	constructor(options) {
     		super();
-    		init(this, options, instance$4, create_fragment$5, safe_not_equal, { path: 8, component: 0 });
+    		init(this, options, instance$5, create_fragment$5, safe_not_equal, { path: 8, component: 0 });
     	}
     }
 
@@ -1682,46 +1690,360 @@ var app = (function () {
     	let title;
     	let t0;
     	let t1;
-    	let main;
-    	let section;
-    	let h1;
+    	let body;
+    	let nav;
+    	let a0;
     	let t2;
+    	let t3;
+    	let a1;
+    	let t4;
+    	let t5;
+    	let main;
+    	let div6;
+    	let h1;
+    	let t6;
+    	let t7;
+    	let div0;
+    	let t8;
+    	let t9;
+    	let div1;
+    	let t10;
+    	let t11;
+    	let div2;
+    	let t12;
+    	let t13;
+    	let div3;
+    	let t14;
+    	let t15;
+    	let div4;
+    	let t16;
+    	let t17;
+    	let div5;
+    	let t18;
+    	let t19;
+    	let div19;
+    	let div10;
+    	let div7;
+    	let t20;
+    	let t21;
+    	let div8;
+    	let t22;
+    	let div9;
+    	let t23;
+    	let t24;
+    	let div14;
+    	let div11;
+    	let t25;
+    	let t26;
+    	let div12;
+    	let t27;
+    	let div13;
+    	let t28;
+    	let t29;
+    	let div18;
+    	let div15;
+    	let t30;
+    	let t31;
+    	let div16;
+    	let t32;
+    	let div17;
+    	let t33;
 
     	return {
     		c() {
     			title = element("title");
-    			t0 = text("你好");
+    			t0 = text("知鱼哦");
     			t1 = space();
+    			body = element("body");
+    			nav = element("nav");
+    			a0 = element("a");
+    			t2 = text("首页");
+    			t3 = space();
+    			a1 = element("a");
+    			t4 = text("RPG");
+    			t5 = space();
     			main = element("main");
-    			section = element("section");
+    			div6 = element("div");
     			h1 = element("h1");
-    			t2 = text("知鱼");
+    			t6 = text("知魚");
+    			t7 = space();
+    			div0 = element("div");
+    			t8 = text("海玻璃");
+    			t9 = space();
+    			div1 = element("div");
+    			t10 = text("花");
+    			t11 = space();
+    			div2 = element("div");
+    			t12 = text("温水");
+    			t13 = space();
+    			div3 = element("div");
+    			t14 = text("惑星");
+    			t15 = space();
+    			div4 = element("div");
+    			t16 = text("绒绒");
+    			t17 = space();
+    			div5 = element("div");
+    			t18 = text("风");
+    			t19 = space();
+    			div19 = element("div");
+    			div10 = element("div");
+    			div7 = element("div");
+    			t20 = text("邮局");
+    			t21 = space();
+    			div8 = element("div");
+    			t22 = space();
+    			div9 = element("div");
+    			t23 = text("post");
+    			t24 = space();
+    			div14 = element("div");
+    			div11 = element("div");
+    			t25 = text("故事本");
+    			t26 = space();
+    			div12 = element("div");
+    			t27 = space();
+    			div13 = element("div");
+    			t28 = text("stories");
+    			t29 = space();
+    			div18 = element("div");
+    			div15 = element("div");
+    			t30 = text("小卖部");
+    			t31 = space();
+    			div16 = element("div");
+    			t32 = space();
+    			div17 = element("div");
+    			t33 = text("grocery");
+    			this.h();
     		},
     		l(nodes) {
     			title = claim_element(nodes, "TITLE", {});
     			var title_nodes = children(title);
-    			t0 = claim_text(title_nodes, "你好");
+    			t0 = claim_text(title_nodes, "知鱼哦");
     			title_nodes.forEach(detach);
     			t1 = claim_space(nodes);
-    			main = claim_element(nodes, "MAIN", {});
+    			body = claim_element(nodes, "BODY", { class: true });
+    			var body_nodes = children(body);
+    			nav = claim_element(body_nodes, "NAV", { class: true });
+    			var nav_nodes = children(nav);
+    			a0 = claim_element(nav_nodes, "A", { href: true, class: true });
+    			var a0_nodes = children(a0);
+    			t2 = claim_text(a0_nodes, "首页");
+    			a0_nodes.forEach(detach);
+    			t3 = claim_space(nav_nodes);
+    			a1 = claim_element(nav_nodes, "A", { href: true, class: true });
+    			var a1_nodes = children(a1);
+    			t4 = claim_text(a1_nodes, "RPG");
+    			a1_nodes.forEach(detach);
+    			nav_nodes.forEach(detach);
+    			t5 = claim_space(body_nodes);
+    			main = claim_element(body_nodes, "MAIN", { class: true });
     			var main_nodes = children(main);
-    			section = claim_element(main_nodes, "SECTION", {});
-    			var section_nodes = children(section);
-    			h1 = claim_element(section_nodes, "H1", {});
+    			div6 = claim_element(main_nodes, "DIV", { id: true, class: true });
+    			var div6_nodes = children(div6);
+    			h1 = claim_element(div6_nodes, "H1", { id: true, class: true });
     			var h1_nodes = children(h1);
-    			t2 = claim_text(h1_nodes, "知鱼");
+    			t6 = claim_text(h1_nodes, "知魚");
     			h1_nodes.forEach(detach);
-    			section_nodes.forEach(detach);
+    			t7 = claim_space(div6_nodes);
+    			div0 = claim_element(div6_nodes, "DIV", { style: true, class: true });
+    			var div0_nodes = children(div0);
+    			t8 = claim_text(div0_nodes, "海玻璃");
+    			div0_nodes.forEach(detach);
+    			t9 = claim_space(div6_nodes);
+    			div1 = claim_element(div6_nodes, "DIV", { style: true, class: true });
+    			var div1_nodes = children(div1);
+    			t10 = claim_text(div1_nodes, "花");
+    			div1_nodes.forEach(detach);
+    			t11 = claim_space(div6_nodes);
+    			div2 = claim_element(div6_nodes, "DIV", { style: true, class: true });
+    			var div2_nodes = children(div2);
+    			t12 = claim_text(div2_nodes, "温水");
+    			div2_nodes.forEach(detach);
+    			t13 = claim_space(div6_nodes);
+    			div3 = claim_element(div6_nodes, "DIV", { style: true, class: true });
+    			var div3_nodes = children(div3);
+    			t14 = claim_text(div3_nodes, "惑星");
+    			div3_nodes.forEach(detach);
+    			t15 = claim_space(div6_nodes);
+    			div4 = claim_element(div6_nodes, "DIV", { style: true, class: true });
+    			var div4_nodes = children(div4);
+    			t16 = claim_text(div4_nodes, "绒绒");
+    			div4_nodes.forEach(detach);
+    			t17 = claim_space(div6_nodes);
+    			div5 = claim_element(div6_nodes, "DIV", { style: true, class: true });
+    			var div5_nodes = children(div5);
+    			t18 = claim_text(div5_nodes, "风");
+    			div5_nodes.forEach(detach);
+    			div6_nodes.forEach(detach);
+    			t19 = claim_space(main_nodes);
+    			div19 = claim_element(main_nodes, "DIV", { id: true, class: true });
+    			var div19_nodes = children(div19);
+    			div10 = claim_element(div19_nodes, "DIV", { class: true });
+    			var div10_nodes = children(div10);
+    			div7 = claim_element(div10_nodes, "DIV", { class: true });
+    			var div7_nodes = children(div7);
+    			t20 = claim_text(div7_nodes, "邮局");
+    			div7_nodes.forEach(detach);
+    			t21 = claim_space(div10_nodes);
+    			div8 = claim_element(div10_nodes, "DIV", { class: true });
+    			children(div8).forEach(detach);
+    			t22 = claim_space(div10_nodes);
+    			div9 = claim_element(div10_nodes, "DIV", { class: true });
+    			var div9_nodes = children(div9);
+    			t23 = claim_text(div9_nodes, "post");
+    			div9_nodes.forEach(detach);
+    			div10_nodes.forEach(detach);
+    			t24 = claim_space(div19_nodes);
+    			div14 = claim_element(div19_nodes, "DIV", { class: true });
+    			var div14_nodes = children(div14);
+    			div11 = claim_element(div14_nodes, "DIV", { class: true });
+    			var div11_nodes = children(div11);
+    			t25 = claim_text(div11_nodes, "故事本");
+    			div11_nodes.forEach(detach);
+    			t26 = claim_space(div14_nodes);
+    			div12 = claim_element(div14_nodes, "DIV", { class: true });
+    			children(div12).forEach(detach);
+    			t27 = claim_space(div14_nodes);
+    			div13 = claim_element(div14_nodes, "DIV", { class: true });
+    			var div13_nodes = children(div13);
+    			t28 = claim_text(div13_nodes, "stories");
+    			div13_nodes.forEach(detach);
+    			div14_nodes.forEach(detach);
+    			t29 = claim_space(div19_nodes);
+    			div18 = claim_element(div19_nodes, "DIV", { class: true });
+    			var div18_nodes = children(div18);
+    			div15 = claim_element(div18_nodes, "DIV", { class: true });
+    			var div15_nodes = children(div15);
+    			t30 = claim_text(div15_nodes, "小卖部");
+    			div15_nodes.forEach(detach);
+    			t31 = claim_space(div18_nodes);
+    			div16 = claim_element(div18_nodes, "DIV", { class: true });
+    			children(div16).forEach(detach);
+    			t32 = claim_space(div18_nodes);
+    			div17 = claim_element(div18_nodes, "DIV", { class: true });
+    			var div17_nodes = children(div17);
+    			t33 = claim_text(div17_nodes, "grocery");
+    			div17_nodes.forEach(detach);
+    			div18_nodes.forEach(detach);
+    			div19_nodes.forEach(detach);
     			main_nodes.forEach(detach);
+    			body_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
+    			attr(a0, "href", "/");
+    			attr(a0, "class", "svelte-172xr9r");
+    			attr(a1, "href", "/rpg");
+    			attr(a1, "class", "svelte-172xr9r");
+    			attr(nav, "class", "svelte-172xr9r");
+    			attr(h1, "id", "introTitle");
+    			attr(h1, "class", "svelte-172xr9r");
+    			set_style(div0, "top", "50%");
+    			set_style(div0, "left", "12%");
+    			set_style(div0, "font-size", "12vmin");
+    			attr(div0, "class", "svelte-172xr9r");
+    			set_style(div1, "top", "5%");
+    			set_style(div1, "left", "25%");
+    			set_style(div1, "font-size", "20vmin");
+    			set_style(div1, "font-weight", "bold");
+    			attr(div1, "class", "svelte-172xr9r");
+    			set_style(div2, "top", "27%");
+    			set_style(div2, "left", "7%");
+    			set_style(div2, "font-size", "17vmin");
+    			attr(div2, "class", "svelte-172xr9r");
+    			set_style(div3, "top", "25%");
+    			set_style(div3, "left", "2%");
+    			attr(div3, "class", "svelte-172xr9r");
+    			set_style(div4, "top", "64%");
+    			set_style(div4, "left", "-2%");
+    			set_style(div4, "width", "1em");
+    			set_style(div4, "line-height", "9vmin");
+    			attr(div4, "class", "svelte-172xr9r");
+    			set_style(div5, "top", "35%");
+    			set_style(div5, "left", "-1%");
+    			set_style(div5, "font-size", "19vmin");
+    			set_style(div5, "font-weight", "bold");
+    			attr(div5, "class", "svelte-172xr9r");
+    			attr(div6, "id", "introPlacement");
+    			attr(div6, "class", "svelte-172xr9r");
+    			attr(div7, "class", "SectionText svelte-172xr9r");
+    			attr(div8, "class", "PageDots svelte-172xr9r");
+    			attr(div9, "class", "PageNumber svelte-172xr9r");
+    			attr(div10, "class", "SectionBlock svelte-172xr9r");
+    			attr(div11, "class", "SectionText svelte-172xr9r");
+    			attr(div12, "class", "PageDots svelte-172xr9r");
+    			attr(div13, "class", "PageNumber svelte-172xr9r");
+    			attr(div14, "class", "SectionBlock svelte-172xr9r");
+    			attr(div15, "class", "SectionText svelte-172xr9r");
+    			attr(div16, "class", "PageDots svelte-172xr9r");
+    			attr(div17, "class", "PageNumber svelte-172xr9r");
+    			attr(div18, "class", "SectionBlock svelte-172xr9r");
+    			attr(div19, "id", "sections");
+    			attr(div19, "class", "svelte-172xr9r");
+    			attr(main, "class", "svelte-172xr9r");
+    			attr(body, "class", "svelte-172xr9r");
     		},
     		m(target, anchor) {
     			insert_hydration(target, title, anchor);
     			append_hydration(title, t0);
     			insert_hydration(target, t1, anchor);
-    			insert_hydration(target, main, anchor);
-    			append_hydration(main, section);
-    			append_hydration(section, h1);
-    			append_hydration(h1, t2);
+    			insert_hydration(target, body, anchor);
+    			append_hydration(body, nav);
+    			append_hydration(nav, a0);
+    			append_hydration(a0, t2);
+    			append_hydration(nav, t3);
+    			append_hydration(nav, a1);
+    			append_hydration(a1, t4);
+    			append_hydration(body, t5);
+    			append_hydration(body, main);
+    			append_hydration(main, div6);
+    			append_hydration(div6, h1);
+    			append_hydration(h1, t6);
+    			append_hydration(div6, t7);
+    			append_hydration(div6, div0);
+    			append_hydration(div0, t8);
+    			append_hydration(div6, t9);
+    			append_hydration(div6, div1);
+    			append_hydration(div1, t10);
+    			append_hydration(div6, t11);
+    			append_hydration(div6, div2);
+    			append_hydration(div2, t12);
+    			append_hydration(div6, t13);
+    			append_hydration(div6, div3);
+    			append_hydration(div3, t14);
+    			append_hydration(div6, t15);
+    			append_hydration(div6, div4);
+    			append_hydration(div4, t16);
+    			append_hydration(div6, t17);
+    			append_hydration(div6, div5);
+    			append_hydration(div5, t18);
+    			append_hydration(main, t19);
+    			append_hydration(main, div19);
+    			append_hydration(div19, div10);
+    			append_hydration(div10, div7);
+    			append_hydration(div7, t20);
+    			append_hydration(div10, t21);
+    			append_hydration(div10, div8);
+    			append_hydration(div10, t22);
+    			append_hydration(div10, div9);
+    			append_hydration(div9, t23);
+    			append_hydration(div19, t24);
+    			append_hydration(div19, div14);
+    			append_hydration(div14, div11);
+    			append_hydration(div11, t25);
+    			append_hydration(div14, t26);
+    			append_hydration(div14, div12);
+    			append_hydration(div14, t27);
+    			append_hydration(div14, div13);
+    			append_hydration(div13, t28);
+    			append_hydration(div19, t29);
+    			append_hydration(div19, div18);
+    			append_hydration(div18, div15);
+    			append_hydration(div15, t30);
+    			append_hydration(div18, t31);
+    			append_hydration(div18, div16);
+    			append_hydration(div18, t32);
+    			append_hydration(div18, div17);
+    			append_hydration(div17, t33);
     		},
     		p: noop,
     		i: noop,
@@ -1729,15 +2051,19 @@ var app = (function () {
     		d(detaching) {
     			if (detaching) detach(title);
     			if (detaching) detach(t1);
-    			if (detaching) detach(main);
+    			if (detaching) detach(body);
     		}
     	};
+    }
+
+    function instance$4($$self) {
+    	return [];
     }
 
     class Home extends SvelteComponent {
     	constructor(options) {
     		super();
-    		init(this, options, null, create_fragment$4, safe_not_equal, {});
+    		init(this, options, instance$4, create_fragment$4, safe_not_equal, {});
     	}
     }
 
